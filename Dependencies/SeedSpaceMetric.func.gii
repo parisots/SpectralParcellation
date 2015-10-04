@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GIFTI xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="http://brainvis.wustl.edu/caret6/xml_schemas/GIFTI_Caret.xsd"
+       Version="1"
+       NumberOfDataArrays="1">
+   <MetaData>
+      <MD>
+         <Name><![CDATA[AnatomicalStructurePrimary]]></Name>
+         <Value><![CDATA[CortexLeft]]></Value>
+      </MD>
+      <MD>
+         <Name><![CDATA[ParentProvenance]]></Name>
+         <Value><![CDATA[SeedSpaceMetric.func.gii:
+/homes/sparisot/Documents/HCP/workbench/bin_linux64/../exe_linux64/wb_command -signed-distance-to-surface 100307.L.white.32k_fs_LR.surf.gii 100307.L.pial.32k_fs_LR.surf.gii /data/probtrack100307/left/SeedSpaceMetric.func.gii
+
+]]></Value>
+      </MD>
+      <MD>
+         <Name><![CDATA[ProgramProvenance]]></Name>
+         <Value><![CDATA[Workbench
+Version: Beta 0.84
+Qt Compiled Version: 4.8.4
+Qt Runtime Version: 4.8.4
+commit: 56d01a31d8e17578f0981077e499447e2756fd66
+commit date: 2013-11-21 11:11:33 -0600
+Compiled Debug: NO
+Operating System: Linux
+]]></Value>
+      </MD>
+      <MD>
+         <Name><![CDATA[Provenance]]></Name>
+         <Value><![CDATA[/homes/sparisot/Documents/HCP/workbench/bin_linux64/../exe_linux64/wb_command -metric-math (var * 0) + 1 SeedSpaceMetric.func.gii -var var SeedSpaceMetric.func.gii]]></Value>
+      </MD>
+      <MD>
+         <Name><![CDATA[UniqueID]]></Name>
+         <Value><![CDATA[{ff3c7f47-672c-48de-af69-bf9981aea25c}]]></Value>
+      </MD>
+      <MD>
+         <Name><![CDATA[WorkingDirectory]]></Name>
+         <Value><![CDATA[/data/probtrack100307/left]]></Value>
+      </MD>
+   </MetaData>
+   <LabelTable>
+      <Label Key="0" Red="1" Green="1" Blue="1" Alpha="0"><![CDATA[???]]></Label>
+   </LabelTable>
+<DataArray Intent="NIFTI_INTENT_NORMAL"
+           DataType="NIFTI_TYPE_FLOAT32"
+           ArrayIndexingOrder="RowMajorOrder"
+           Dimensionality="1"
+           Dim0="32492"
+           Encoding="GZipBase64Binary"
+           Endian="LittleEndian"
+           ExternalFileName=""
+           ExternalFileOffset="0">
+   <MetaData>
+      <MD>
+         <Name><![CDATA[UniqueID]]></Name>
+         <Value><![CDATA[{494cfea4-bba6-4c59-bd6b-1ee393387050}]]></Value>
+      </MD>
+   </MetaData>
+   <Data>eJztwwEJAAAIwLA3s5rRzSFssNpJVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV9/QCNpbeX</Data>
+</DataArray>
+</GIFTI>
