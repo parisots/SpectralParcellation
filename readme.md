@@ -24,7 +24,7 @@ Parisot, S., Arslan, S., Passerat-Palmbach, J., Wells III, W.M., Rueckert, D.: T
 The main functions for running the code are *SpectralParcellation.m* (group-wise parcellation) and *SingleParcellation.m* (single subject parcellation).
 We assume that each subject has a specific identification (it could be the file name), linked to the way the data is stored. 
 
-We provide an example (*example.m* file) using the file organisation of the [Human Connectome Project database](db.humanconnectome.org) and a tractography matrix obtained from [FSL's probtrackX](http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide#PROBTRACKX_-_probabilistic_tracking_with_crossing_fibres) (data not provided due to the large size of the matrices). <br/>
+We provide an example (*example.m* file) using the file organisation of the [Human Connectome Project database](https://db.humanconnectome.org) and a tractography matrix obtained from [FSL's probtrackX](http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide#PROBTRACKX_-_probabilistic_tracking_with_crossing_fibres) (data not provided due to the large size of the matrices). <br/>
 In order to run on a different dataset, the functions *ComputeCorrelationMatrix.m* and *loadSubjectData.m* have to be replaced. 
 
 ##### Data requirements: 
