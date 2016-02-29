@@ -39,7 +39,7 @@ hemisphere = 'L';
 
 % Setting the paths, TO BE MODIFIED
 pathToData='/homes/user/data/';
-wb_command='/homes/user/workbench/bin_linux64/wb_command';
+wbCommand='/homes/user/workbench/bin_linux64/wb_command';
 
 %% Do the parcellation
 
