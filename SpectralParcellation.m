@@ -46,63 +46,67 @@ pathToCorMat = '/diffusion/preprocessed/T1w/probtrack/';
 
 % path where temporary files are saved, has to be subject specific
 for i=1:numel(subjectlist)
-    savePath(i) = [pathToData subjectlist{i} pathToCorMat hemisphere];
+    savePath{i} = [pathToData subjectlist{i} pathToCorMat hemisphere];
 end
 
+R=cell(numel(subjectlist),numel(subjectlist));
+match=cell(numel(subjectlist),numel(subjectlist));
+
 for i=1:numel(subjectlist)
-
+    
     subjectID = subjectlist{i};
-
-    %%% load useful structural data
-    data = loadSubjectData(subjectID,hemisphere,pathToData);
-
-    if ~exist([savePath(i) '/SCM.mat'])
-    %%% Get the correlation matrix
-    CorMat = ComputeCorrelationMatrix(subjectID,pathToData,pathToCorMat,wbCommand);
-
-    %%% Create supervertices
-    SCmatrix = MultiAffinity(data.Sphere,data.BrainSurf,data.roi,CorMat,data.Mat,1,data.LV);
-
-    %%% saving results (better for memory than loading all data and SCmatrices at once)
-    cd(savePath(i))
-    save('SCM.mat','SCmatrix','data')
-    clear SCmatrix
-    clear CorMat
+    
+    
+    if ~exist([savePath{i} '/SCM.mat'])
+        
+        %%% load useful structural data
+        data = loadSubjectData(subjectID,hemisphere,pathToData);
+        
+        %%% Get the correlation matrix
+        CorMat = ComputeCorrelationMatrix(subjectID,pathToData,pathToCorMat,wbCommand);
+        
+        %%% Create supervertices
+        SCmatrix = MultiAffinity(data.Sphere,data.BrainSurf,data.roi,CorMat,data.Mat,1,data.LV);
+        
+        %%% saving results (better for memory than loading all data and SCmatrices at once)
+        cd(savePath{i})
+        save('SCM.mat','SCmatrix','data')
+        clear SCmatrix
+        clear CorMat
     end
-
+    
     %% Construction of inter-subjects links
-
-    R=cell(numel(subjectlist),numel(subjectlist));
-    match=cell(numel(subjectlist),numel(subjectlist));
-
+    
+    
+    
     for j=1:numel(subjectlist)
-
+        
         Subject2=subjectlist{j};
         disp(Subject2)
-
+        
         if strcmp(subjectID,Subject2)
             continue
         end
-
-        cd(savePath(i))
-
+        
+        cd(savePath{i})
+        
         load SCM.mat
-
+        
         SCmatrix1=SCmatrix;
-
-        cd(savePath(j))
-
+        
+        cd(savePath{j})
+        
         load SCM.mat
-
+        
         SCmatrix2=SCmatrix;
-
+        
         clear SCMatrix
         data.Mat=[];
-
-
+        
+        
         [R{i,j},match{i,j}] = ComputePWlinks(SCmatrix1,SCmatrix2,data);
     end
-
+    
 end
 
 %% Do the groupwise parcellation
@@ -110,18 +114,18 @@ end
 
 %%% load all subject data and set up some parameters
 for i=1:numel(subjectlist)
-    cd(savePath(i))
+    cd(savePath{i})
     load('SCM.mat','SCmatrix');
     SCmatrices{i}=SCmatrix;
     clear SCmatrix
 end
 
-Nlayers=length(SCmatrix.baseSeg.Seeds);
+Nlayers=length(SCmatrices{1}.baseSeg.Seeds);
 layer =1; %% supervertex resolution on which the parcellation is visualised
 
 
 for i=1:Nlayers
-    nC(i)=numel(SCmatrix.baseSeg.Seeds{i});
+    nC(i)=numel(SCmatrices{1}.baseSeg.Seeds{i});
 end
 
 tmp=[SCmatrices{:}];
@@ -139,25 +143,25 @@ clear tmp
 %%% Project parcellation on the brain surface
 
 for j=1:numel(subjectlist)
-    cd(savePath(j))
+    cd(savePath{j})
     load('SCM.mat','data');
-
+    
     sN=j-1;
-
+    
     if sN==0
         Map=zeros(length(data.BrainSurf.vertices),numel(subjectlist));
     end
-
+    
     %%%  offset to find the subject's parcellation in the global parcellation
     %%% matrix
     offset=sN*sum(nC(1:Nlayers))+sum(nC(1:layer-1));
     for i=offset+1:nC(layer)+offset
         Map(SCmatrices{sN+1}.baseSeg.Maps{layer}==i-offset,j)=find(NcutDiscrete(i,:)==1);
     end
-
+    
     %%% Compute the merged connectivity profiles and normalise them
     [Corr(:,:,j),Inlist{j}] = MergeConnectivityMatrix2(1:Nclus,Map(data.Inc,j),data.Mat(data.Inc,data.Inc),data.Inc);
-
+    
     for i=1:Nclus
         if numel(Inlist{j}{i})==0
             dg(i)=1;
@@ -165,9 +169,9 @@ for j=1:numel(subjectlist)
             dg(i)=numel(Inlist{j}{i});
         end
     end
-
+    
     Corr(:,:,j)=bsxfun(@rdivide,Corr(:,:,j),dg');
-
+    
 end
 
 res.parcellation=Map;
