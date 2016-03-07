@@ -68,7 +68,7 @@ for i=1:nlayers
     %%% sample uniform seeds on the surface, use the sphere for this
     [ Sd, idx ] = generateSeedVertices( Sphere.vertices, Sphere.faces, BrainSurf.vertices, roi.cdata, ratio(i) );
     %%% construct the supervertex parcellations
-    [Map{i}, Seeds{i}, Mn{i}] = Iterative_SV(CorMat,double(idx),list_vertices,Inc,MWlist, double(BrainSurf.vertices), double(BrainSurf.faces),3);
+    [Map{i}, Seeds{i}, Mn{i}] = Iterative_SV(CorMat(Inc,Inc),double(idx),list_vertices,Inc,MWlist, double(BrainSurf.vertices), double(BrainSurf.faces),3);
     %%% merge the tractography matrix to obtain a NseedxNseed connectivity
     %%% matrix (one connectivity profile per supervertex)
     [MatSV{i},Inlist{i},CM{i}] = MergeConnectivityMatrix(Seeds{i},Map{i},Mat(Inc,Inc),Inc);
