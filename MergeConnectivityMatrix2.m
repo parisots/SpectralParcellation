@@ -75,7 +75,9 @@ MatM = full(MatM);
 %% Compute the correlation matrix
 
 if nargout==3
+    MatM(MatM<1)=0;
     Matlog=log(MatM);
+    Matlog(Matlog<0)=0;
     CorMat=corrcoef(Matlog);
 end
 
