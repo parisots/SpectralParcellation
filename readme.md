@@ -6,6 +6,7 @@ Multi-scale Spectral Clustering Parcellation
  Please cite any of the corresponding paper if using the code: 
 
 -Parisot, S., Arslan, S., Passerat-Palmbach, J., Wells III, W.M., Rueckert, D.: Group-wise Parcellation of the Cortex Through Multi-scale Spectral Clustering. NeuroImage (2016)
+
 -Parisot, S., Arslan, S., Passerat-Palmbach, J., Wells III, W.M., Rueckert, D.: Tractography-Driven Groupwise Multi-scale Parcellation of the Cortex. In: Information Processing in Medical Imaging. pp. 600–612. Springer (2015)
 
 
