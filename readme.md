@@ -3,7 +3,7 @@ Multi-scale Spectral Clustering Parcellation
 
  This code provides a Matlab implementation of the extension of the multi-scale normalised cuts approach (Cour et al., CVPR, 2005) for group-wise connectivity-driven brain parcellation. 
  
- Please cite any of the corresponding paper if using the code: 
+ Please cite any of the corresponding papers if using the code: 
 
 -Parisot, S., Arslan, S., Passerat-Palmbach, J., Wells III, W.M., Rueckert, D.: Group-wise Parcellation of the Cortex Through Multi-scale Spectral Clustering. NeuroImage (2016)
 
